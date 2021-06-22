@@ -1,0 +1,8 @@
+@media screen and (max-width: 425px) {
+	.popup__close_for_tooltip {
+		width: 42px;
+		height: 42px;
+		top: -63px;
+		left: 119px;
+	}
+}

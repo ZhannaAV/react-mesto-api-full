@@ -1,0 +1,13 @@
+.popup__figure{
+	margin: auto;
+	max-width: 75vw;
+	max-height: 75vh;
+	height: 100%;
+	position: relative;
+}
+
+@media screen and (max-width: 425px) {
+	.popup__figure{
+		height: auto;
+	}
+}

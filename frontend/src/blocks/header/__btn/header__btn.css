@@ -1,0 +1,15 @@
+.header__btn{
+	display: none;
+}
+
+@media screen and (max-width: 425px) {
+	.header__btn {
+		display: inline-block;
+		background-color: rgba(0, 0, 0, 0);
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center center;
+		border: none;
+		padding: 0;
+	}
+}

@@ -1,0 +1,12 @@
+.popup__input-field{
+	margin: 54px 0 16px;
+	padding: 0;
+	border: none;
+	display: grid;
+}
+
+@media screen and (max-width: 425px) {
+	.popup__input-field {
+		margin-top: 75px;
+	}
+}

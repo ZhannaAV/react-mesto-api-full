@@ -1,0 +1,11 @@
+.sign__field{
+	margin-bottom: 216px;
+	border: none;
+	padding: 0;
+}
+
+@media screen and (max-width: 425px) {
+	.sign__field{
+		margin-bottom: 173px;
+	}
+}

@@ -1,0 +1,5 @@
+.popup__form_for_submit{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}

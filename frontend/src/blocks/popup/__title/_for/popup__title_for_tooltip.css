@@ -1,0 +1,6 @@
+@media screen and (max-width: 425px) {
+	.popup__title_for_tooltip{
+		font-size: 20px;
+		line-height: 24px;
+	}
+}

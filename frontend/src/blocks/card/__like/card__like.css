@@ -1,0 +1,18 @@
+.card__like{
+	background: #fff url("../../../images/Heart.svg") no-repeat;
+	background-size: contain;
+	border: none;
+	width: 21px;
+	height: 19px;
+	margin-bottom: 3px;
+	transition-duration: .3s;
+}
+
+.card__like:hover{
+	opacity: .5;
+	cursor: pointer;
+}
+
+.card__like:focus{
+	outline: none;
+}
