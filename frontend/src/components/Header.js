@@ -25,7 +25,9 @@ function Header() {
 
     function handleUnlogged() {
         setLoggedIn(false)
+        localStorage.setItem('token', '');
         handleBurgerMenuClose()
+
     }
 
     function handleBurgerMenuOpen() {

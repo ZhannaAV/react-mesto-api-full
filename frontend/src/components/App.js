@@ -35,29 +35,23 @@ function App() {
     const history = useHistory()
 
 
-    function tokenCheck() {
-        const token = localStorage.getItem('token')
-        if (token) {
-            auth.getContent(token)
-                .then(res => {
-                    setLoggedIn(true)
-                    setEmailSign(res.data.email)
-                    history.push('/')
-                })
-        }
-    }
-
     React.useEffect(() => {
-        Promise.all([api.getInitialProfile(), api.getInitialCards()])
-            .then(([userData, cards]) => {
-                setCurrentUser(userData);
-                setCards(cards)
-            })
-            .catch((err) => console.log(err))
-        tokenCheck()
+        if (localStorage.getItem('token')) api.getInitialProfile()
+            .then(() => setLoggedIn(true))
     }, [])
 
-    //если добавить проверку loggedIn и добавить его в dependancy, то не работает загрузка токена их кеша
+
+    React.useEffect(() => {
+        if (loggedIn) Promise.all([api.getInitialProfile(), api.getInitialCards()])
+                .then(([userData, cards]) => {
+                    setCurrentUser(userData);
+                    setEmailSign(userData.email)
+                    setCards(cards)
+                    history.push('/')
+                })
+                .catch((err) => console.log(err))
+    }, [loggedIn])
+
 
     function handleCardClick(card) {
         setSelectedCard(card)
@@ -166,10 +160,8 @@ function App() {
     function handleLogin(email, password) {
         auth.authorize(email, password)
             .then((res) => {
-                setEmailSign(email)
                 localStorage.setItem('token', res.token);
-                setLoggedIn(true);
-                history.push('/');
+                setLoggedIn(true)
             })
             .catch((err) => {
                 showInfoTooltip(false) //удобно для юзера видеть сообщение о неудаче и здесь

@@ -6,4 +6,4 @@
 // }
 
 export const baseUrl = 'http://api.zhanna.students.nomoredomains.club'
-export const token = localStorage.getItem('token') || ''
+
