@@ -93,7 +93,7 @@ class Api {
 //добавление и убирание лайка
     changeLikeCardStatus(cardId, isLiked) {
         const method = isLiked ? 'DELETE' : 'PUT';
-        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: method,
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
