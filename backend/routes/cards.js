@@ -12,7 +12,7 @@ router.post('/', celebrate({
     name: Joi.string().pattern(new RegExp('^[a-яё -]+$'))
       .min(2)
       .max(30),
-    link: Joi.string().required().pattern(new RegExp('^https?:\\/\\/(www.)?[-a-zA-Z0-9@:%.+~#=]{1,256}.[a-zA-Z0-9()]{1,6}[a-zA-Z0-9-.~:/?#@!$&\'()+,;=[]]')),
+    link: Joi.string().required().pattern(new RegExp('^(http|https):\\/\\/[A-za-z0-9-._~:/?#\\[\\]@!$&\'()*+,;=]{1,}$')),
   }),
 }), createCard);
 

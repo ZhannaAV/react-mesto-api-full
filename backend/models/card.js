@@ -19,7 +19,7 @@ const cardSchema = new mongoose.Schema({
     validate: {
       validator(v) {
         // проверка регуляркой на уровне схемы - это условие задания
-        return /^https?:\/\/(www.)?[-a-zA-Z0-9@:%.+~#=]{1,256}.[a-zA-Z0-9()]{1,6}[a-zA-Z0-9-.~:/?#@!$&'()+,;=[]]/gi.test(v);
+        return /^(http|https):\/\/[A-za-z0-9-._~:/?#\[\]@!$&'()*+,;=]{1,}$/.test(v);
       },
       message: 'Укажите корректную ссылку',
     },
