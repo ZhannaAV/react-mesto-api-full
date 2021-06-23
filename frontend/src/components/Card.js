@@ -7,12 +7,13 @@ function Card(props) {
     const currentUser = React.useContext(CurrentUserContext)
 
     // Определяем, являемся ли мы владельцем текущей карточки
-    const isOwn = card.owner._id === currentUser._id;
+    const isOwn = card.owner === currentUser._id;
     const cardDeleteBtnClassName = `card__delete ${!isOwn && 'card__delete_hidden'}`
 
     // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     const cardLikeBtnClassName = `card__like ${isLiked && 'card__like_active'}`
+
 
     function handleClick() {
         props.onCardClick(card);
