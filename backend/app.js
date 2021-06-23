@@ -12,6 +12,7 @@ const errorHandler = require('./middlewares/err');
 const corsOption = require('./middlewares/corsOption');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+require('dotenv').config();
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
