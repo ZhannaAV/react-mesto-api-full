@@ -10,14 +10,14 @@ function Header() {
     const {pathname} = useLocation()
     const signSwitch = () => {
         switch (pathname) {
-            case '/sign-up':
+            case '/signup':
                 return {
-                    to: "/sign-in",
+                    to: "/signin",
                     title: "Войти"
                 }
             default:
                 return {
-                    to: "/sign-up",
+                    to: "/signup",
                     title: "Регистрация"
                 }
         }

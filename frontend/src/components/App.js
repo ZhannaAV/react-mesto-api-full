@@ -155,7 +155,7 @@ function App() {
         auth.register(email, password)
             .then(() => {
                 showInfoTooltip(true) //открываем попап InfoTooltip
-                history.push('/sign-in')
+                history.push('/signin')
             })
             .catch((err) => {
                 showInfoTooltip(false)//открываем попап InfoTooltip
@@ -184,11 +184,11 @@ function App() {
                     <div className="page__container">
                         <Header/>
                         <Switch>
-                            <Route path='/sign-in'>
+                            <Route path='/signin'>
                                 <Login onLogin={handleLogin}/>
                             </Route>
 
-                            <Route path='/sign-up'>
+                            <Route path='/signup'>
                                 <Register onRegister={handleRegister}/>
                             </Route>
 

@@ -7,7 +7,7 @@ function ProtectedRoute({component: Component,...props}) {
     const {loggedIn} = logContext
     return (
         <Route>
-            {loggedIn ? <Component {...props}/> : <Redirect to='/sign-in'/>}
+            {loggedIn ? <Component {...props}/> : <Redirect to='/signin'/>}
         </Route>
     )
 }

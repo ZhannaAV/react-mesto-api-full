@@ -1,4 +1,5 @@
-export const authUrl = 'https://auth.nomoreparties.co';
+// export const authUrl = 'https://auth.nomoreparties.co';
+export const authUrl = 'http://api.zhanna.students.nomoredomains.club';
 
 function checkResponse(res){
     if (res.ok) return res.json();
