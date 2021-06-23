@@ -1,10 +1,9 @@
-import {baseUrl, personalData} from "./constants";
+import {baseUrl, token} from "./constants";
 
 class Api {
-    constructor(baseUrl, personalData) {
+    constructor(baseUrl, token) {
         this._baseUrl = baseUrl;
-        this._cohortId = personalData.cohortId;
-        this._token = personalData.token
+        this._token = token
     }
 
     _checkResponse(res) {
@@ -16,7 +15,7 @@ class Api {
 
 //возвращает массив со всеми данными профиля с сервера
     getInitialProfile() {
-        return fetch(`${this._baseUrl}/${this._cohortId}/users/me`, {
+        return fetch(`${this._baseUrl}/users/me`, {
             headers: {
                 authorization: `${this._token}`
             }
@@ -26,7 +25,7 @@ class Api {
 
 //меняет данные профайла на сервере и возвращает все данные профиля
     changeInfoProfile({name, about}) {
-        return fetch(`${this._baseUrl}/${this._cohortId}/users/me`, {
+        return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: {
                 authorization: `${this._token}`,
@@ -42,7 +41,7 @@ class Api {
 
     //меняет данные профайла на сервере и возвращает все данные профиля
     changeAvatarProfile({avatar}) {
-        return fetch(`${this._baseUrl}/${this._cohortId}/users/me/avatar`, {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
                 authorization: `${this._token}`,
@@ -57,7 +56,7 @@ class Api {
 
 //возвращает массив со всеми данными профиля с сервера
     getInitialCards() {
-        return fetch(`${this._baseUrl}/${this._cohortId}/cards`, {
+        return fetch(`${this._baseUrl}/cards`, {
             headers: {
                 authorization: `${this._token}`,
             }
@@ -67,7 +66,7 @@ class Api {
 
     //добавляет карточку на сервер и возвращает ответ
     postNewCard({name, link}) {
-        return fetch(`${this._baseUrl}/${this._cohortId}/cards`, {
+        return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: {
                 authorization: `${this._token}`,
@@ -83,7 +82,7 @@ class Api {
 
     //удаляет карточку
     deleteCard(cardID) {
-        return fetch(`${this._baseUrl}/${this._cohortId}/cards/${cardID}`, {
+        return fetch(`${this._baseUrl}/cards/${cardID}`, {
             method: 'DELETE',
             headers: {
                 authorization: `${this._token}`
@@ -95,7 +94,7 @@ class Api {
 //добавление и убирание лайка
     changeLikeCardStatus(cardId, isLiked) {
         const method = isLiked ? 'DELETE' : 'PUT';
-        return fetch(`${this._baseUrl}/${this._cohortId}/cards/likes/${cardId}`, {
+        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
             method: method,
             headers: {
                 authorization: `${this._token}`
@@ -104,5 +103,5 @@ class Api {
             .then(this._checkResponse);
     }
 }
-const api = new Api(baseUrl, personalData);
+const api = new Api(baseUrl, token);
 export default api
