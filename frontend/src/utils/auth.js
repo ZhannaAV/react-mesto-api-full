@@ -1,5 +1,5 @@
 // export const authUrl = 'https://auth.nomoreparties.co';
-export const authUrl = 'http://api.zhanna.students.nomoredomains.club';
+import {baseUrl} from "./constants";
 
 function checkResponse(res){
     if (res.ok) return res.json();
@@ -7,7 +7,7 @@ function checkResponse(res){
 }
 
 export const register = (email, password) => {
-        return fetch(`${authUrl}/signup`, {
+        return fetch(`${baseUrl}/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ export const register = (email, password) => {
     }
 
 export const authorize = (email, password) => {
-    return fetch(`${authUrl}/signin`, {
+    return fetch(`${baseUrl}/signin`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

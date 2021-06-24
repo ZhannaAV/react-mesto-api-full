@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
+const UncorrectDataError = require('../errors/UncorrectDataError');
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
@@ -19,6 +20,14 @@ module.exports.getMe = (req, res, next) => {
     .catch(next);
 };
 
+module.exports.getUser = (req, res, next) => {
+  const userId = req.params.id;
+  User.findById(userId)
+    .orFail(() => new UncorrectDataError('Нет пользователя с таким id'))
+    .then((user) => res.status(200).send(user))
+    .catch(next);
+};
+
 module.exports.createUser = (req, res, next) => {
   const {
     name, about, avatar, email, password,
@@ -28,6 +37,7 @@ module.exports.createUser = (req, res, next) => {
       name, about, avatar, email, password: hash,
     })
       .then((user) => {
+        // eslint-disable-next-line no-param-reassign
         user.password = '';
         res.status(200).send(user);
       })

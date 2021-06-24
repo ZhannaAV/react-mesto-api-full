@@ -6,24 +6,24 @@ const LoginError = require('../errors/LoginError');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    validate: {
-      validator(v) {
-        return /^[a-za-яё -]+$/i.test(v);
-      },
-      message: 'Укажите корректное название',
-    },
+    // validate: {
+    //   validator(v) {
+    //     return /^[a-za-яё0-9 -]+$/i.test(v);
+    //   },
+    //   message: 'Укажите корректное название',
+    // },
     minlength: 2,
     maxlength: 20,
     default: 'Жак-Ив Кусто',
   },
   about: {
     type: String,
-    validate: {
-      validator(v) {
-        return /^[a-za-яё -]+$/i.test(v);
-      },
-      message: 'Укажите корректное название',
-    },
+    // validate: {
+    //   validator(v) {
+    //     return /^[a-za-яё0-9 -]+$/i.test(v);
+    //   },
+    //   message: 'Укажите корректное название',
+    // },
     minlength: 2,
     maxlength: 30,
     default: 'Исследователь',
@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator(v) {
+        // eslint-disable-next-line no-useless-escape
         return /^(http|https):\/\/[A-za-z0-9-._~:/?#\[\]@!$&'()*+,;=]{1,}$/.test(v);
       },
       message: 'Укажите корректную ссылку',
@@ -52,7 +53,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    select: false, // ?? хеш пароля всё равно возвращается
+    select: false,
   },
 });
 

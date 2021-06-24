@@ -42,9 +42,9 @@ app.post('/signup', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().pattern(new RegExp('^[a-z0-9-_.]{1,20}@[a-z0-9-_.]{1,20}\\.[a-z]{2,5}$')),
     password: Joi.string().required(),
-    name: Joi.string().pattern(new RegExp('^[a-яё -]+$')).min(2).max(20),
+    name: Joi.string().min(2).max(20),
     about: Joi.string().min(2).max(30),
-    // eslint-disable-next-line max-len
+    // eslint-disable-next-line max-len,no-useless-escape
     avatar: Joi.string().pattern(new RegExp(/^(http|https):\/\/[A-za-z0-9-._~:/?#\[\]@!$&'()*+,;=]{1,}$/)),
   }),
 }), createUser);
@@ -59,8 +59,23 @@ app.post('/signin', celebrate({
 app.use('/cards', auth, cardsRouter);
 app.use('/users', auth, usersRouter);
 
+app.get('/', (req, res, next) => {
+  if (req) throw new NotFoundError('Запрашиваемый ресурс не найден');
+  next();
+});
+
+app.post('/', (req, res, next) => {
+  if (req) throw new NotFoundError('Запрашиваемый ресурс не найден');
+  next();
+});
+
 app.get('/:path', (req, res, next) => {
-  if (req.params.path) throw new NotFoundError('Cтраница не найдена');
+  if (req.params.path) throw new NotFoundError('Запрашиваемый ресурс не найден');
+  next();
+});
+
+app.post('/:path', (req, res, next) => {
+  if (req.params.path) throw new NotFoundError('Запрашиваемый ресурс не найден');
   next();
 });
 

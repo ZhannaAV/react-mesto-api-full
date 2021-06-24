@@ -10,7 +10,7 @@ function ImagePopup(props) {
                      alt={card ? card.name : ''}/>
                 <figcaption className="popup__figcaption">{card ? card.name : ''}</figcaption>
                 <button onClick={props.onClose} className="popup__close" type="button"
-                        aria-label="закрыть окно"></button>
+                        aria-label="закрыть окно"/>
             </figure>
         </div>
     )
