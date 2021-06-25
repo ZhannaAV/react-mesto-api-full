@@ -21,7 +21,7 @@ module.exports.getMe = (req, res, next) => {
 };
 
 module.exports.getUser = (req, res, next) => {
-  const userId = req.params.id;
+  const { userId } = req.params;
   User.findById(userId)
     .orFail(() => new UncorrectDataError('Нет пользователя с таким id'))
     .then((user) => res.status(200).send(user))
